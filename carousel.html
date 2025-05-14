@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carousel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .carousel-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 1000%;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-right: 1px solid #ccc;
+    }
+
+    .carousel-slide h2 {
+      margin-top: 0;
+    }
+
+    .carousel-buttons {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .carousel-buttons button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-container">
+    <div class="carousel-track" id="carouselTrack">
+      <!-- 10 Blocks -->
+      <div class="carousel-slide"><h2>Block 1</h2><p>This is content block 1.</p></div>
+      <div class="carousel-slide"><h2>Block 2</h2><p>This is content block 2.</p></div>
+      <div class="carousel-slide"><h2>Block 3</h2><p>This is content block 3.</p></div>
+      <div class="carousel-slide"><h2>Block 4</h2><p>This is content block 4.</p></div>
+      <div class="carousel-slide"><h2>Block 5</h2><p>This is content block 5.</p></div>
+      <div class="carousel-slide"><h2>Block 6</h2><p>This is content block 6.</p></div>
+      <div class="carousel-slide"><h2>Block 7</h2><p>This is content block 7.</p></div>
+      <div class="carousel-slide"><h2>Block 8</h2><p>This is content block 8.</p></div>
+      <div class="carousel-slide"><h2>Block 9</h2><p>This is content block 9.</p></div>
+      <div class="carousel-slide"><h2>Block 10</h2><p>This is content block 10.</p></div>
+    </div>
+  </div>
+
+  <div class="carousel-buttons">
+    <button onclick="moveSlide(-1)">Previous</button>
+    <button onclick="moveSlide(1)">Next</button>
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    const track = document.getElementById("carouselTrack");
+    const totalSlides = 10;
+
+    function moveSlide(direction) {
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = totalSlides - 1;
+      if (currentIndex >= totalSlides) currentIndex = 0;
+      const offset = -100 * currentIndex;
+      track.style.transform = `translateX(${offset}%)`;
+    }
+  </script>
+
+</body>
+</html>
